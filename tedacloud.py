@@ -15,7 +15,7 @@ from os.path import join
 
 
 def gen_Label_Solution(centers, labels):
-    # generate unique label solution (mapping for comparison between different label solution)
+    # generate unique label solution (mapping for comparison between different label solutions)
     idx = np.argsort(centers.sum(axis=1))
     lut = np.zeros_like(idx)
     lut[idx] = np.arange(len(centers))
@@ -40,10 +40,6 @@ class Tedacloud:
 
     def recursive_teda(self, curr_observation, previous_mean, previous_var = 0, previous_scal = 0, k = 1, dist_type = 'euclidean', m=3):
         
-#         recursive_mean = ((k - 1) / k)*previous_mean + (1/k)*curr_observation
-#         recursive_scal = ((k-1)/k) * previous_scal + (np.sum(curr_observation * curr_observation)/k)
-#         recursive_var = recursive_scal - np.sum(recursive_mean * recursive_mean)
-#         recursive_ecc = (1/k) + (np.sum((recursive_mean - curr_observation) * (recursive_mean - curr_observation))/(k * recursive_var))
         recursive_mean = ((k - 1) / k)*previous_mean + (1/k)*curr_observation
         
         if k == 1:
